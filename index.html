@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alejandro Alvarado Rojas | Clases de Charango e Instrumentos Andinos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4a437;
+      --gold-soft: #f1cf72;
+      --cream: #f7f1e3;
+      --brown: #1a0f0a;
+      --brown-soft: #2b1810;
+      --red: #9c2f1f;
+      --green: #476c38;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top, rgba(212, 164, 55, 0.18), transparent 30%),
+        linear-gradient(135deg, rgba(156, 47, 31, 0.28), transparent 45%),
+        linear-gradient(160deg, #120905 0%, #1b100b 45%, #0f0906 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(45deg, transparent 48%, var(--gold) 49%, var(--gold) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, var(--gold) 49%, var(--gold) 51%, transparent 52%);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, rgba(0,0,0,0.2));
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 32px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+      border: 1px solid rgba(241, 207, 114, 0.22);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      color: var(--gold-soft);
+      text-transform: uppercase;
+    }
+
+    .badge {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), var(--red));
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 5vw, 4.9rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      text-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+
+    .highlight {
+      color: var(--gold);
+      display: block;
+    }
+
+    .lead {
+      margin: 22px 0 26px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.86);
+      max-width: 640px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #b97b16);
+      color: #1b1007;
+      box-shadow: 0 12px 30px rgba(212, 164, 55, 0.3);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.22);
+      color: white;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--gold-soft);
+      margin-bottom: 6px;
+    }
+
+    .portrait-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 620px;
+      border: 1px solid rgba(241, 207, 114, 0.24);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+      background: #120905;
+    }
+
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 10px;
+      background: linear-gradient(90deg, #1f7a34, #d0a62a, #a92f21);
+      z-index: 3;
+    }
+
+    .portrait-image {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 28px;
+      background: linear-gradient(to top, rgba(13, 8, 6, 0.95), rgba(13, 8, 6, 0.15));
+      z-index: 2;
+    }
+
+    .portrait-overlay h2 {
+      margin: 0 0 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold-soft);
+      text-transform: uppercase;
+    }
+
+    .portrait-overlay p {
+      margin: 0;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 22px 0 34px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title span {
+      display: inline-block;
+      color: var(--gold-soft);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      text-transform: uppercase;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .course {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
+    }
+
+    .course h4 {
+      margin: 0 0 10px;
+      color: var(--gold-soft);
+      font-size: 1.15rem;
+      text-transform: uppercase;
+    }
+
+    .course p {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 12px;
+    }
+
+    .panel {
+      border-radius: 24px;
+      padding: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(241, 207, 114, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h4 {
+      margin: 0 0 14px;
+      font-family: 'Cinzel', serif;
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      font-size: 1.35rem;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      padding-left: 18px;
+      position: relative;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.65;
+    }
+
+    .list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 36px 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(71,108,56,0.22), rgba(156,47,31,0.18), rgba(212,164,55,0.16));
+      border: 1px solid rgba(241, 207, 114, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3 {
+      margin: 0 0 12px;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      color: var(--gold-soft);
+      text-transform: uppercase;
+    }
+
+    .contact-box p {
+      max-width: 760px;
+      margin: 0 auto 18px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.86);
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      text-align: center;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .info-grid,
+      .courses {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-card { min-height: 520px; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      h1 {
+        line-height: 1.02;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">Alejandro Alvarado Rojas</div>
+        <div class="badge">Clases de música andina</div>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Formación folclórica con estilo moderno</div>
+          <h1>
+            Clases de <span class="highlight">Charango</span>
+            e Instrumentos Andinos
+          </h1>
+          <p class="lead">
+            Aprende de forma práctica, dinámica y cultural con Alejandro Alvarado Rojas, charanguista dedicado a enseñar con métodos propios y didácticos. Una propuesta musical pensada para niños, jóvenes y adultos que quieren conectar con la riqueza del folclore andino.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#cursos">Ver cursos</a>
+            <a class="btn btn-secondary" href="#contacto">Pedir información</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>6</strong>
+              Instrumentos disponibles
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              Enfoque práctico y didáctico
+            </div>
+            <div class="stat">
+              <strong>Folclore</strong>
+              Tradición andina con imagen moderna
+            </div>
+          </div>
+        </div>
+
+        <div class="portrait-card">
+          <img class="portrait-image" src="alejandro-charango-hero.jpg" alt="Alejandro Alvarado Rojas con charango" />
+          <div class="portrait-overlay">
+            <h2>Alejandro Alvarado Rojas</h2>
+            <p>Charanguista y formador musical, con una propuesta visual impactante y una enseñanza cercana para quienes desean aprender instrumentos andinos con identidad propia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="cursos">
+    <div class="wrap">
+      <div class="section-title">
+        <span>Oferta musical</span>
+        <h3>Cursos disponibles</h3>
+      </div>
+
+      <div class="courses">
+        <article class="course">
+          <h4>Charango</h4>
+          <p>Aprende técnica, ritmo, melodía y acompañamiento en uno de los instrumentos más emblemáticos de la música andina.</p>
+        </article>
+        <article class="course">
+          <h4>Guitarra</h4>
+          <p>Clases para desarrollar acordes, punteos, acompañamiento y seguridad musical desde lo básico hasta lo práctico.</p>
+        </article>
+        <article class="course">
+          <h4>Mandolina</h4>
+          <p>Descubre un sonido brillante y versátil, ideal para repertorios folclóricos y arreglos melódicos.</p>
+        </article>
+        <article class="course">
+          <h4>Flauta dulce</h4>
+          <p>Formación musical accesible para iniciar lectura, digitación y expresión sonora de manera sencilla.</p>
+        </article>
+        <article class="course">
+          <h4>Guitarra eléctrica</h4>
+          <p>Explora técnica, ritmo y estilo con una enseñanza progresiva, adaptable al nivel del estudiante.</p>
+        </article>
+        <article class="course">
+          <h4>Zampoña</h4>
+          <p>Conecta con el sonido ancestral andino, aprendiendo respiración, fraseo y sensibilidad interpretativa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-title">
+        <span>Metodología</span>
+        <h3>Aprendizaje garantizado</h3>
+      </div>
+
+      <div class="info-grid">
+        <div class="panel">
+          <h4>¿Qué hace especial estas clases?</h4>
+          <ul class="list">
+            <li>Métodos propios y didácticos para avanzar con confianza.</li>
+            <li>Enseñanza pensada para distintos niveles y edades.</li>
+            <li>Enfoque práctico, musical y cultural al mismo tiempo.</li>
+            <li>Ambiente inspirador con identidad folclórica andina.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h4>Ideal para</h4>
+          <ul class="list">
+            <li>Quienes quieren iniciar en la música andina.</li>
+            <li>Estudiantes que buscan técnica y repertorio.</li>
+            <li>Niños, jóvenes y adultos con gusto por el folclore.</li>
+            <li>Personas que quieren aprender un instrumento con estilo y emoción.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="contact-box">
+        <h3>Solicita información</h3>
+        <p>
+          Si quieres aprender charango e instrumentos andinos con una propuesta visual atractiva, moderna y con esencia folclórica, esta es tu oportunidad. Contáctate para conocer horarios, modalidad de clases y disponibilidad.
+        </p>
+        <p style="margin: 0 auto 18px; max-width: 760px; color: rgba(255,255,255,0.88); line-height: 1.8;">
+          <strong>Tel:</strong> <a href="tel:+15716032645" style="color: var(--gold-soft); text-decoration: none;">(571) 603-2645</a><br>
+          <strong>Email:</strong> <a href="mailto:alitoalvarado64@gmail.com" style="color: var(--gold-soft); text-decoration: none;">alitoalvarado64@gmail.com</a><br>
+          <strong>Ubicación:</strong> Virginia, USA
+        </p>
+        <div class="cta-row" style="justify-content:center; margin-bottom:0;">
+          <a class="btn btn-primary" href="mailto:alitoalvarado64@gmail.com">Escribir por email</a>
+          <a class="btn btn-secondary" href="tel:+15716032645">Llamar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">Alejandro Alvarado Rojas · Clases de Charango e Instrumentos Andinos</div>
+  </footer>
+</body>
+</html>
